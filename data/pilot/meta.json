@@ -1,0 +1,179 @@
+{
+ "slug": "downtown-dallas",
+ "name": "Downtown Dallas and the Arts District",
+ "bbox": [
+  -96.806,
+  32.7765,
+  -96.7935,
+  32.7905
+ ],
+ "timezone": "America/Chicago",
+ "frame": {
+  "lat0": 32.783500000000004,
+  "lon0": -96.79974999999999
+ },
+ "grid": {
+  "x_min": -986.0,
+  "y_max": 1177.0,
+  "res": 1.0,
+  "width": 1972,
+  "height": 2354
+ },
+ "sources": {
+  "osm": {
+   "pulled_at": "2026-10-13T01:33:49+00:00",
+   "via": "osmnx: Overpass for the walk graph, the OSM API map call for buildings, places, trees and road names",
+   "licence": "ODbL, (c) OpenStreetMap contributors"
+  },
+  "naip": [
+   {
+    "item": "tx_m_3209610_se_14_060_20220704",
+    "acquired": "2022-07-04T16:00:00Z",
+    "gsd_m": 0.6
+   }
+  ],
+  "lidar": {
+   "dsm": {
+    "item": "TX_Pecos_Dallas_B3_2018-dsm-2m-8-6",
+    "native_res_m": 2.0
+   },
+   "classification": {
+    "item": "TX_Pecos_Dallas_B3_2018-classification-2m-8-6",
+    "native_res_m": 2.0
+   }
+  },
+  "imagery_via": "Microsoft Planetary Computer STAC",
+  "climatology": "Open-Meteo archive API (ERA5 reanalysis), hourly temperature_2m, 2015 to 2024"
+ },
+ "model": {
+  "building_height_rule": "OSM height, else 3 m per building:levels, else 10 m",
+  "canopy_height_rule": "lidar first return minus ground where it reads a crown, else 8 m",
+  "representative_day": "day 15 of each month, 2025",
+  "sample_spacing_m": 1.0,
+  "min_sun_elevation_deg": 2.0,
+  "shadow_buffer_m": 400.0
+ },
+ "stats": {
+  "network": {
+   "raw_nodes": 2525,
+   "raw_edges": 3412,
+   "dropped_indoor_tunnel_private": 121,
+   "dropped_disconnected_nodes": 137,
+   "nodes": 2388,
+   "edges": 3272,
+   "edges_with_street_label": 3023,
+   "length_km": 100.7,
+   "km_by_kind": {
+    "crossing": 5.26,
+    "path": 9.55,
+    "service": 21.83,
+    "sidewalk": 60.66,
+    "steps": 0.87,
+    "street": 2.53
+   }
+  },
+  "pois": {
+   "bus_stop": 104,
+   "cooling": 4,
+   "landmark": 1,
+   "park": 20,
+   "rail_stop": 16,
+   "school": 5,
+   "water": 6
+  },
+  "buildings": {
+   "osm_outlines": 661,
+   "osm_parts": 217,
+   "prisms": 883,
+   "prisms_by_height_source": {
+    "height": 310,
+    "levels": 202,
+    "default": 348,
+    "roof": 15,
+    "inherited": 8
+   },
+   "footprint_share_by_height_source": {
+    "height": 0.336,
+    "levels": 0.251,
+    "default": 0.408,
+    "roof": 0.003,
+    "inherited": 0.003
+   },
+   "default_height_m": 10.0,
+   "metres_per_level": 3.0,
+   "lidar_cross_check": {
+    "default": {
+     "prisms": 337,
+     "median_osm_m": 10.0,
+     "median_lidar_m": 10.4,
+     "median_abs_diff_m": 4.3
+    },
+    "height": {
+     "prisms": 258,
+     "median_osm_m": 30.0,
+     "median_lidar_m": 27.5,
+     "median_abs_diff_m": 4.3
+    },
+    "inherited": {
+     "prisms": 8,
+     "median_osm_m": 10.0,
+     "median_lidar_m": 8.0,
+     "median_abs_diff_m": 5.2
+    },
+    "levels": {
+     "prisms": 195,
+     "median_osm_m": 15.0,
+     "median_lidar_m": 22.3,
+     "median_abs_diff_m": 5.9
+    },
+    "roof": {
+     "prisms": 15,
+     "median_osm_m": 4.0,
+     "median_lidar_m": 8.9,
+     "median_abs_diff_m": 4.9
+    }
+   }
+  },
+  "canopy": {
+   "method": "NAIP NDVI > 0.10, kept where 2018 3DEP lidar stands >= 2.5 m above ground within 2 cells, OSM building footprints removed",
+   "vegetation_share_of_grid": 0.0834,
+   "texture_cue_tested": {
+    "what": "5x5 standard deviation of NIR, median over lidar-tall vs lidar-low vegetation",
+    "tall_vegetation": 18.5,
+    "low_vegetation": 22.1
+   },
+   "vegetation_that_is_tall_share": 0.497,
+   "canopy_height_from_lidar_share": 0.96,
+   "patches": 2081,
+   "source": "naip",
+   "canopy_share_of_grid": 0.0632,
+   "median_height_m": 6.0,
+   "osm_tree_cross_check": {
+    "osm_tree_points": 572,
+    "within_3m_of_canopy": 305,
+    "share": 0.533
+   },
+   "polygons": 1989
+  },
+  "shade": {
+   "segments": 3272,
+   "samples": 102343,
+   "sample_spacing_m": 1.0,
+   "daylight_slots": 142,
+   "representative_day": "day 15 of each month, 2025, America/Chicago clock time",
+   "min_sun_elevation_deg": 2.0,
+   "samples_inside_building_footprints_share": 0.0086,
+   "samples_under_canopy_share": 0.0652,
+   "always_covered_segments": 25,
+   "july_3pm_sun": {
+    "azimuth": 244.8,
+    "elevation": 67.7
+   },
+   "july_3pm_network_shade_share": {
+    "buildings": 0.182,
+    "all": 0.257
+   },
+   "seconds": 24.3
+  }
+ }
+}
