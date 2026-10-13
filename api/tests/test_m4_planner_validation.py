@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import ast
 import os
+from datetime import UTC
 from pathlib import Path
 
 import numpy as np
@@ -84,13 +85,13 @@ def test_independent_check_shares_no_code_with_the_shade_model() -> None:
 
 
 def test_independent_sun_position_matches_pvlib() -> None:
-    from datetime import datetime, timezone
+    from datetime import datetime
 
     import pandas as pd
     from pvlib import solarposition
 
     for stamp in ("2025-07-15T20:00", "2025-01-15T15:00", "2025-04-15T22:00", "2025-10-15T14:30"):
-        when = datetime.fromisoformat(stamp).replace(tzinfo=timezone.utc)
+        when = datetime.fromisoformat(stamp).replace(tzinfo=UTC)
         truth = solarposition.get_solarposition(pd.DatetimeIndex([when]), 32.7835, -96.79975)
         azimuth, elevation = independent.noaa_sun(when, 32.7835, -96.79975)
         assert azimuth == pytest.approx(float(truth["azimuth"].iloc[0]), abs=0.1)

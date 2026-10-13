@@ -38,7 +38,7 @@ class ShadeTable:
     sun_elevation: NDArray[np.float32]
 
     @staticmethod
-    def load(path: Path) -> "ShadeTable":
+    def load(path: Path) -> ShadeTable:
         with np.load(path) as data:
             return ShadeTable(
                 segments_all=data["segments_all"],
@@ -63,10 +63,9 @@ class ShadeTable:
         hour = int(minute // 60)
         weight = (minute - hour * 60) / 60
         here = table[month - 1, hour].astype(np.float32)
-        if weight == 0:
-            return here / SCALE
-        there = table[month - 1, (hour + 1) % 24].astype(np.float32)
-        return (here * (1 - weight) + there * weight) / SCALE
+        there = table[month - 1, (hour + 1) % 24].astype(np.float32) if weight > 0 else here
+        blended: NDArray[np.float32] = ((here * (1 - weight) + there * weight) / SCALE).astype(np.float32)
+        return blended
 
     def segments(self, month: int, minute: float, layer: Layer = "all") -> NDArray[np.float32]:
         """Shade fraction of every segment, 0 to 1, for a month (1 to 12) and minute of the local day."""

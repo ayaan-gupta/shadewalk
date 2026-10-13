@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="ShadeWalk share card background">
+  <!-- Interim art. Text is drawn on top by the app: leave the left 700 px calm. -->
+  <rect width="1200" height="630" fill="#FBF7F0"/>
+  <rect x="760" width="440" height="630" fill="#F6C56B"/>
+  <rect x="760" y="0" width="440" height="120" fill="#5B3A5E"/>
+  <rect x="760" y="120" width="440" height="80" fill="#C44D58"/>
+  <rect x="760" y="200" width="440" height="70" fill="#EB6B4F"/>
+  <rect x="760" y="270" width="440" height="60" fill="#F2994A"/>
+  <circle cx="1010" cy="290" r="92" fill="#FFF3D1"/>
+  <g fill="#5B3A5E">
+    <rect x="790" y="210" width="90" height="200"/><rect x="900" y="150" width="70" height="260"/><rect x="1080" y="190" width="100" height="220"/>
+  </g>
+  <rect x="760" y="410" width="440" height="220" fill="#FBEBD3"/>
+  <g fill="#1B7F8A">
+    <polygon points="790,410 880,410 840,630 700,630"/><polygon points="900,410 970,410 950,630 840,630"/><polygon points="1080,410 1180,410 1160,630 1020,630"/>
+  </g>
+  <rect x="1000" y="424" width="10" height="56" fill="#5B3A5E"/><circle cx="1005" cy="404" r="38" fill="#0E5C68"/><circle cx="1020" cy="392" r="22" fill="#7FC4C1"/>
+  <polygon points="760,0 700,630 760,630" fill="#FBF7F0"/>
+  <rect x="64" y="560" width="120" height="8" rx="4" fill="#1B7F8A"/><rect x="196" y="560" width="48" height="8" rx="4" fill="#EB6B4F"/>
+</svg>

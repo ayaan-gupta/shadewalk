@@ -50,7 +50,7 @@ class ClimatologyWeather:
         self._source = source
 
     @staticmethod
-    def from_file(path: Path) -> "ClimatologyWeather":
+    def from_file(path: Path) -> ClimatologyWeather:
         data = json.loads(path.read_text())
         return ClimatologyWeather(data["mean_temp_c"], data["source"])
 

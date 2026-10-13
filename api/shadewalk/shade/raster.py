@@ -61,7 +61,7 @@ class SunFrame:
         u, v = t[None, :], t[:, None]
         return cx + u * sx + v * nx, cy + u * sy + v * ny
 
-    def cells_of_world(self, x: FloatArray, y: FloatArray) -> tuple[NDArray[np.int64], NDArray[np.int64]]:
+    def cells_of_world(self, x: NDArray[np.floating], y: NDArray[np.floating]) -> tuple[NDArray[np.int64], NDArray[np.int64]]:
         """Rotated-frame (row, col) of world points. Always inside the frame for points on the grid."""
         sx, sy, nx, ny = self._axes
         cx, cy = self._centre
@@ -79,7 +79,7 @@ class Shadow:
     frame: SunFrame
     mask: BoolArray
 
-    def at(self, x: FloatArray, y: FloatArray) -> BoolArray:
+    def at(self, x: NDArray[np.floating], y: NDArray[np.floating]) -> BoolArray:
         """Whether each world point is in shadow."""
         row, col = self.frame.cells_of_world(x, y)
         out: BoolArray = self.mask[row, col]

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Bus stop">
+  <circle cx="48" cy="48" r="46" fill="#FBEBD3"/>
+  <polygon points="24,74 66,74 76,82 30,82" fill="#1B7F8A"/>
+  <rect x="22" y="30" width="46" height="7" rx="2" fill="#C44D58"/>
+  <rect x="25" y="37" width="5" height="38" fill="#5B3A5E"/><rect x="60" y="37" width="5" height="38" fill="#5B3A5E"/>
+  <rect x="33" y="60" width="24" height="5" rx="2" fill="#F2994A"/>
+  <rect x="74" y="24" width="4" height="52" fill="#5B3A5E"/><circle cx="76" cy="24" r="9" fill="#EB6B4F"/><rect x="71" y="22" width="10" height="4" rx="1" fill="#FBF7F0"/>
+</svg>

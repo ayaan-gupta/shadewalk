@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Water fountain">
+  <circle cx="48" cy="48" r="46" fill="#FBEBD3"/>
+  <ellipse cx="50" cy="78" rx="24" ry="6" fill="#1B7F8A"/>
+  <rect x="40" y="46" width="16" height="32" rx="3" fill="#5B3A5E"/>
+  <rect x="30" y="40" width="36" height="9" rx="4" fill="#C44D58"/>
+  <path d="M 44 40 C 44 22, 62 22, 62 36" fill="none" stroke="#7FC4C1" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 62 28 c 5 7 5 11 0 11 c -5 0 -5 -4 0 -11 z" fill="#1B7F8A"/>
+</svg>

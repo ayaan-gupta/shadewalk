@@ -14,7 +14,7 @@ import socket
 import time
 import warnings
 from datetime import UTC, datetime
-from typing import Any, Callable, TypeVar
+from typing import Any
 from urllib.parse import urlparse
 
 import geopandas as gpd
@@ -23,8 +23,6 @@ import pandas as pd
 import requests
 
 from .config import PILOT, RAW
-
-T = TypeVar("T")
 
 WAY_TAGS = [
     "highway", "footway", "name", "tunnel", "covered", "indoor", "level", "layer",
@@ -59,7 +57,7 @@ def buffered_bbox(buffer_m: float) -> tuple[float, float, float, float]:
     return (w - dlon, s - dlat, e + dlon, n + dlat)
 
 
-def with_retry(what: str, fn: Callable[[], T], attempts: int = 30) -> T:
+def with_retry[T](what: str, fn: Callable[[], T], attempts: int = 30) -> T:
     """Overpass refuses connections when it is busy. Wait and ask again."""
     for i in range(attempts):
         try:
@@ -121,7 +119,7 @@ def features_via_osm_api(bbox: tuple[float, float, float, float], tags: dict[str
     folder = RAW / "osm-api"
     folder.mkdir(parents=True, exist_ok=True)
     frames = []
-    for i, tile in enumerate([(w, s, mx, my), (mx, s, e, my), (w, my, mx, n), (mx, my, e, n)]):
+    for tile in [(w, s, mx, my), (mx, s, e, my), (w, my, mx, n), (mx, my, e, n)]:
         path = folder / ("%.5f_%.5f_%.5f_%.5f.osm" % tile)
         if not path.exists():
             response = requests.get(OSM_API, params={"bbox": ",".join(f"{v:.5f}" for v in tile)}, headers={"User-Agent": "shadewalk-pilot-build/0.1"}, timeout=120)

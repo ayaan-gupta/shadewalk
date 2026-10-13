@@ -46,7 +46,7 @@ class Network:
         return len(self.edges)
 
     @staticmethod
-    def build(frame: LocalFrame, nodes: list[list[float]], edges: list[dict[str, Any]]) -> "Network":
+    def build(frame: LocalFrame, nodes: list[list[float]], edges: list[dict[str, Any]]) -> Network:
         lon = np.array([n[0] for n in nodes], dtype=np.float64)
         lat = np.array([n[1] for n in nodes], dtype=np.float64)
         x, y = frame.to_xy(lon, lat)

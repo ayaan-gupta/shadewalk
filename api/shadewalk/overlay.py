@@ -35,7 +35,7 @@ class ShadowOverlay:
     bbox: tuple[float, float, float, float]
     table: ShadeTable
     max_cached: int = 400
-    _cache: "OrderedDict[tuple[int, int, str], bytes]" = field(default_factory=OrderedDict, repr=False)
+    _cache: OrderedDict[tuple[int, int, str], bytes] = field(default_factory=OrderedDict, repr=False)
     _lock: Lock = field(default_factory=Lock, repr=False)
 
     def _window(self) -> tuple[slice, slice]:

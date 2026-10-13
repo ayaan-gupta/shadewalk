@@ -89,8 +89,8 @@ class Grid:
 
     def centres(self) -> tuple[FloatArray, FloatArray]:
         """1-D arrays of pixel-centre x (per column) and y (per row)."""
-        xs = self.x_min + (np.arange(self.width) + 0.5) * self.res
-        ys = self.y_max - (np.arange(self.height) + 0.5) * self.res
+        xs: FloatArray = self.x_min + (np.arange(self.width, dtype=np.float64) + 0.5) * self.res
+        ys: FloatArray = self.y_max - (np.arange(self.height, dtype=np.float64) + 0.5) * self.res
         return xs, ys
 
     def to_dict(self) -> dict[str, float | int]:
@@ -103,7 +103,7 @@ class Grid:
         }
 
     @staticmethod
-    def from_dict(d: dict[str, float | int]) -> "Grid":
+    def from_dict(d: dict[str, float | int]) -> Grid:
         return Grid(
             x_min=float(d["x_min"]),
             y_max=float(d["y_max"]),

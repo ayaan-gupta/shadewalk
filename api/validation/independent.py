@@ -29,7 +29,7 @@ import json
 import math
 import random
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
@@ -53,7 +53,7 @@ def noaa_sun(when_utc: datetime, lat: float, lon: float) -> tuple[float, float]:
 
     The NOAA Solar Calculator equations (Meeus, Astronomical Algorithms).
     """
-    stamp = when_utc.astimezone(timezone.utc)
+    stamp = when_utc.astimezone(UTC)
     day = stamp.toordinal() + 1721424.5 + (stamp.hour + stamp.minute / 60 + stamp.second / 3600) / 24
     t = (day - 2451545.0) / 36525.0
     mean_long = (280.46646 + t * (36000.76983 + t * 0.0003032)) % 360
@@ -114,7 +114,7 @@ class World:
     canopy: Array
 
     @staticmethod
-    def load(data_dir: Path = DATA) -> "World":
+    def load(data_dir: Path = DATA) -> World:
         meta = json.loads((data_dir / "meta.json").read_text())
         mx, my = metres_per_degree(meta["frame"]["lat0"])
         lon0, lat0 = meta["frame"]["lon0"], meta["frame"]["lat0"]
@@ -232,7 +232,7 @@ def local_noon_slot(world: World, month: int, hour: int) -> tuple[float, float]:
     day, year = 15, 2025
     when = datetime(year, month, day, hour, tzinfo=ZoneInfo(world.meta["timezone"]))
     w, s, e, n = world.meta["bbox"]
-    return noaa_sun(when.astimezone(timezone.utc), (s + n) / 2, (w + e) / 2)
+    return noaa_sun(when.astimezone(UTC), (s + n) / 2, (w + e) / 2)
 
 
 def run(month: int = 7, hour: int = 15, data_dir: Path = DATA) -> dict[str, Any]:

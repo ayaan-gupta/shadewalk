@@ -70,8 +70,8 @@ def test_shade_fraction_groups_samples_by_segment() -> None:
 
 
 def test_stored_sun_table_is_pvlib_for_the_representative_day(data: Dataset) -> None:
-    from pvlib import solarposition
     import pandas as pd
+    from pvlib import solarposition
 
     w, s, e, n = data.bbox
     tz = ZoneInfo(data.meta["timezone"])

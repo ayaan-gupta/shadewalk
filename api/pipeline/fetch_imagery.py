@@ -26,7 +26,7 @@ from pyproj import Transformer
 from rasterio.windows import from_bounds
 from shapely.geometry import box
 
-from .config import NAIP_COLLECTION, PILOT, RAW, STAC_URL
+from .config import NAIP_COLLECTION, RAW, STAC_URL
 from .grid import pilot_frame, pilot_grid
 
 

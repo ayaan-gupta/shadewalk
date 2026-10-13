@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="Tree">
+  <circle cx="48" cy="48" r="46" fill="#FBEBD3"/>
+  <ellipse cx="56" cy="76" rx="28" ry="7" fill="#1B7F8A"/>
+  <rect x="43" y="50" width="9" height="26" rx="2" fill="#5B3A5E"/>
+  <circle cx="47" cy="38" r="23" fill="#0E5C68"/><circle cx="57" cy="30" r="13" fill="#7FC4C1"/>
+</svg>
