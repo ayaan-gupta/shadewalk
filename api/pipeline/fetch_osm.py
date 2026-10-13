@@ -13,6 +13,7 @@ import os
 import socket
 import time
 import warnings
+from collections.abc import Callable
 from datetime import UTC, datetime
 from typing import Any
 from urllib.parse import urlparse

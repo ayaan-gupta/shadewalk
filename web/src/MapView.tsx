@@ -119,12 +119,6 @@ export function MapView(props: Props) {
             'circle-stroke-width': 1.5,
           },
         })
-        if (compact) {
-          // On a phone the attribution starts folded behind its (i) button, so it does not cover the map.
-          const credit = holder.current?.querySelector('.maplibregl-ctrl-attrib')
-          credit?.classList.remove('maplibregl-compact-show')
-          credit?.removeAttribute('open')
-        }
         setReady(true)
       })
       map.on('click', (event) => pick.current({ lon: event.lngLat.lng, lat: event.lngLat.lat }))
@@ -139,6 +133,14 @@ export function MapView(props: Props) {
     // The map is created once per pilot. Later changes arrive through the effects below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meta.slug])
+
+  // On a phone the attribution folds behind its (i) button, so it does not cover the map.
+  useEffect(() => {
+    if (!ready || !compact) return
+    const credit = holder.current?.querySelector('.maplibregl-ctrl-attrib')
+    credit?.classList.remove('maplibregl-compact-show')
+    credit?.removeAttribute('open')
+  }, [ready, compact])
 
   // The shadow image follows the time slider.
   useEffect(() => {
@@ -167,6 +169,8 @@ export function MapView(props: Props) {
     ;(map.getSource('short') as GeoJSONSource).setData(show && !route.comparison.same_route ? legs(route.shortest) : EMPTY)
     ;(map.getSource('shady') as GeoJSONSource).setData(show ? legs(route.shadiest) : EMPTY)
     if (show) {
+      // The container may have just changed size (rotation, window resize): measure before fitting.
+      map.resize()
       const bounds = new maplibregl.LngLatBounds()
       for (const leg of [...route.shortest.legs, ...route.shadiest.legs]) for (const c of leg.coords) bounds.extend(c)
       map.fitBounds(bounds, { padding: compact ? { top: 80, bottom: 30, left: 30, right: 30 } : { top: 80, bottom: 80, left: 470, right: 80 }, maxZoom: 17, duration: 600 })

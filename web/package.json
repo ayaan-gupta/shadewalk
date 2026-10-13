@@ -11,7 +11,7 @@
     "preview": "vite preview --port ${WEB_PORT:-4107} --strictPort --host 127.0.0.1",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "demo": "tsx scripts/record-demo.ts"
+    "demo": "tsx scripts/record-demo.ts && tsx scripts/phone.ts"
   },
   "dependencies": {
     "maplibre-gl": "^5.6.0",

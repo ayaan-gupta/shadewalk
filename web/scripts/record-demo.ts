@@ -130,10 +130,6 @@ async function main() {
   await hold(1800)
   const stats = await page.textContent('[data-testid="planner-stats"]')
 
-  // A phone-width still of the route view.
-  await page.click('[data-testid="tab-route"]')
-  await still('screen-phone.png', { width: 390, height: 844 })
-
   await browser.close()
   const gif = encodeGif(frames, WIDTH, HEIGHT)
   writeFileSync(path.join(DOCS, 'demo.gif'), gif)
