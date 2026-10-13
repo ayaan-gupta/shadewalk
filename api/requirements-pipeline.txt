@@ -1,0 +1,13 @@
+# Only for rebuilding data/pilot from public sources (make data).
+-r requirements-dev.txt
+osmnx>=2.0,<3
+geopandas>=1.0
+shapely>=2.0
+rasterio>=1.4
+affine>=2.4
+scipy>=1.13
+pyproj>=3.6
+pystac-client>=0.8
+planetary-computer>=1.0
+pandas>=2.2
+requests>=2.32
